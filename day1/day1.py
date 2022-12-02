@@ -1,23 +1,20 @@
-def update_top3(cals, top3):
-  top3.append(cals)
-  top3.sort(reverse=True)
-  return top3[0:3]
+def part1():
+    with open('input.txt', 'r') as file:
+        text = file.read()
+
+    elves = [sum([int(i) if i != '' else 0 for i in nums.split('\n')]) for nums in text.split('\n\n')]
+    print(max(elves))
 
 
-def main():
-  max_cals = 0
-  curr_cals = 0
-  top3 = [0, 0, 0]
+def part2():
+    with open('input.txt', 'r') as file:
+        text = file.read()
 
-  with open('input.txt', 'r') as file:
-    for line in file.readlines():
-      if line == '\n':
-        top3 = update_top3(curr_cals, top3)
-        curr_cals = 0
-      else:
-        curr_cals += int(line)
+    elves = [sum([int(i) if i != '' else 0 for i in nums.split('\n')]) for nums in text.split('\n\n')]
+    elves.sort(reverse=True)
+    print(sum(elves[0:3]))
 
-  print(sum(top3))
 
 if __name__ == '__main__':
-  main()
+    part1()
+    part2()
